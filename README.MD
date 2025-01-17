@@ -149,4 +149,4 @@ MIT License
 
 ---
 
-Developed by **[Your Name]**
+Developed by **[JONATHAN A.]**
