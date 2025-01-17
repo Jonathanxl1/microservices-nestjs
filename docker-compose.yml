@@ -1,0 +1,56 @@
+version: "3.3"
+
+services:
+  user:
+    build: ./users
+    restart: always
+    hostname: user
+    env_file:
+      - .env
+    networks:
+      - backend
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+
+  task:
+    build: ./tasks
+    hostname: task
+    env_file:
+      - .env
+    networks:
+      - backend
+    depends_on:
+      - db
+    ports:
+      - "3001:3001"
+
+  token:
+    build: ./token
+    restart: always
+    hostname: token
+    env_file:
+      - .env
+    networks:
+      - backend
+    ports:
+      - "3002:3002"
+
+  db:
+    container_name: postgres
+    image: postgres:17
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
