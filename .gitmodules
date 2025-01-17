@@ -1,0 +1,9 @@
+[submodule "users"]
+	path = users
+	url = https://github.com/Jonathanxl1/microservice-users
+[submodule "tasks"]
+	path = tasks
+	url = https://github.com/Jonathanxl1/microservice-tasks
+[submodule "token"]
+	path = token
+	url = https://github.com/Jonathanxl1/microservice-token
